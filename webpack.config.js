@@ -16,5 +16,11 @@ module.exports = {
       template: './src/index.html',
       filename: 'index.html'
     })
-  ]
+  ],
+  devServer: {
+    contentBase: path.resolve(__dirname, 'dist'),
+    host: 'localhost',
+    compress: true,
+    port: 8080
+  }
 }
