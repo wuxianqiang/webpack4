@@ -30,3 +30,43 @@ devServer: {
   "dev": "webpack-dev-server --open --mode development"
 }
 ```
+3. loader 的三种写法，loader 是从右往左解析
+```js
+// loader
+module: {
+  rules: [
+    {
+      test: /\.css$/,
+      use: ['style-loader', 'css-loader']
+    }
+  ]
+}
+// use
+module: {
+  rules: [
+    {
+      test: /\.css$/,
+      use: ['style-loader', 'css-loader']
+    }
+  ]
+}
+// loader + use
+module: {
+  rules: [
+    {
+      test: /\.css$/,
+      include: path.resolve(__dirname, 'src'),
+      exclude: /node_modules/,
+      use: [
+        {
+          loader: 'style-loader',
+          options: {
+            insertAt: 'top'
+          }
+        },
+        'css-loader'
+      ]
+    }
+  ]
+}
+```

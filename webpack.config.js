@@ -11,7 +11,17 @@ module.exports = {
     rules: [
       {
         test: /\.css$/,
-        loader: ['style-loader', 'css-loader']
+        include: path.resolve(__dirname, 'src'),
+        exclude: /node_modules/,
+        use: [
+          {
+            loader: 'style-loader',
+            options: {
+              insertAt: 'top'
+            }
+          },
+          'css-loader'
+        ]
       }
     ]
   },
